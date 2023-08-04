@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'styles.css' %}" rel="stylesheet" />
+    <title>Post job</title>
+</head>
+<body>
+    <section class="page-section" id="contact">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-lg-8 col-xl-6 text-center">
+                    <h2 class="mt-0">Post a job. Enter following details</h2>
+                    <hr class="divider" />
+                    <p class="text-muted mb-5">Post a job and hire the talent</p>
+                </div>
+            </div>
+            <div class="row gx-4 gx-lg-5 justify-content-center mb-5">
+                <div class="col-lg-6">
+                    <!-- * * * * * * * * * * * * * * *-->
+                    <!-- * * SB Forms Contact Form * *-->
+                    <!-- * * * * * * * * * * * * * * *-->
+                    <!-- This form is pre-integrated with SB Forms.-->
+                    <!-- To make this form functional, sign up at-->
+                    <!-- https://startbootstrap.com/solution/contact-forms-->
+                    <!-- to get an API token!-->
+                    <form id="contactForm" data-sb-form-api-token="API_TOKEN" action="{% url 'hire' %}" method="POST">
+                        <!-- Name input-->
+                        {% csrf_token %}
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="title" type="text" name="Title" placeholder="Enter title" data-sb-validations="required" />
+                            <label for="name">Job Title</label>
+                            <div class="invalid-feedback" data-sb-feedback="name:required">Title is required.</div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="company" type="text" name="Company" placeholder="Enter Company" data-sb-validations="required" />
+                            <label for="company">Company Name</label>
+                            <div class="invalid-feedback" data-sb-feedback="company:required">company is required.</div>
+                        </div>
+                        <!-- Email address input-->
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="location" type="text" name="Location" placeholder="Location" data-sb-validations="required" />
+                            <label for="location">Location</label>
+                            <div class="invalid-feedback" data-sb-feedback="location:required">location is required.</div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="salary" type="number" name="Salary" placeholder="salary" data-sb-validations="required" />
+                            <label for="salary">Salary</label>
+                            <div class="invalid-feedback" data-sb-feedback="salary:required">Salary is required.</div>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input class="form-control" id="siteurl" type="url" name="link" placeholder="application link" data-sb-validations="required" />
+                            <label for="salary">Application Link</label>
+                            <div class="invalid-feedback" data-sb-feedback="salary:required">link is required.</div>
+                        </div>
+                       
+                        <!-- Message input-->
+                        <div class="form-floating mb-3">
+                            <textarea class="form-control" id="message" type="text" name="Description" placeholder="Enter your Job description here..." style="height: 10rem" data-sb-validations="required"></textarea>
+                            <label for="message">Descripiton</label>
+                            <div class="invalid-feedback" data-sb-feedback="message:required">A description is required.</div>
+                        </div>
+                        <!-- Submit success message-->
+                        <!---->
+                        <!-- This is what your users will see when the form-->
+                        <!-- has successfully submitted-->
+                        <div class="d-none" id="submitSuccessMessage">
+                            <div class="text-center mb-3">
+                                <div class="fw-bolder">Form submission successful!</div>
+                                
+                            </div>
+                        </div>
+                        <!-- Submit error message-->
+                        <!---->
+                        <!-- This is what your users will see when there is-->
+                        <!-- an error submitting the form-->
+                        <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error posting job!</div></div>
+                        <!-- Submit Button-->
+                        <div class="d-grid"><button class="btn btn-primary btn-xl " id="submitButton" type="submit">Submit</button></div>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+</body>
+</html>
